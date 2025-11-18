@@ -1,15 +1,12 @@
 import os
 
-# Глобальные переменные для простоты
 A = 0
 B = 0
 
 def clear_screen():
-    """Очистка экрана"""
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def display_menu():
-    """Показать меню"""
     clear_screen()
     print("=== ПРОСТОЙ КАЛЬКУЛЯТОР ===")
     print(f"A = {A}, B = {B}")
@@ -23,7 +20,6 @@ def display_menu():
     print("========================")
 
 def enter_A():
-    """Ввести число A"""
     global A
     try:
         A = float(input("Введите A: "))
@@ -33,7 +29,6 @@ def enter_A():
     input("Нажмите Enter...")
 
 def enter_B():
-    """Ввести число B"""
     global B
     try:
         B = float(input("Введите B: "))
@@ -43,30 +38,24 @@ def enter_B():
     input("Нажмите Enter...")
 
 def addition():
-    """Сложение"""
+    """Сложение - РАБОЧЕЕ"""
     result = A + B
     print(f"{A} + {B} = {result}")
     input("Нажмите Enter...")
 
 def subtraction():
-    """Вычитание"""
-    result = A - B
-    print(f"{A} - {B} = {result}")
+    """Вычитание - НЕ РЕАЛИЗОВАНО"""
+    print("Вычитание не реализовано")
     input("Нажмите Enter...")
 
 def multiplication():
-    """Умножение"""
-    result = A * B
-    print(f"{A} * {B} = {result}")
+    """Умножение - НЕ РЕАЛИЗОВАНО"""
+    print("Умножение не реализовано")
     input("Нажмите Enter...")
 
 def division():
-    """Деление"""
-    if B == 0:
-        print("Ошибка: деление на ноль!")
-    else:
-        result = A / B
-        print(f"{A} / {B} = {result}")
+    """Деление - НЕ РЕАЛИЗОВАНО"""
+    print("Деление не реализовано")
     input("Нажмите Enter...")
 
 # Главная программа
