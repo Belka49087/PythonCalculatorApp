@@ -1,83 +1,87 @@
-import os
-
-A = 0
-B = 0
-
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-def display_menu():
-    clear_screen()
-    print("=== ПРОСТОЙ КАЛЬКУЛЯТОР ===")
-    print(f"A = {A}, B = {B}")
-    print("1. Ввести A")
-    print("2. Ввести B") 
-    print("3. Сложение (+)")
-    print("4. Вычитание (-)")
-    print("5. Умножение (*)")
-    print("6. Деление (/)")
-    print("0. Выход")
-    print("========================")
-
-def enter_A():
-    global A
-    try:
-        A = float(input("Введите A: "))
-        print(f"A = {A}")
-    except:
-        print("Ошибка! Введите число.")
-    input("Нажмите Enter...")
-
-def enter_B():
-    global B
-    try:
-        B = float(input("Введите B: "))
-        print(f"B = {B}")
-    except:
-        print("Ошибка! Введите число.")
-    input("Нажмите Enter...")
-
-def addition():
-    """Сложение - РАБОЧЕЕ"""
-    result = A + B
-    print(f"{A} + {B} = {result}")
-    input("Нажмите Enter...")
-
-def subtraction():
-    """Вычитание - НЕ РЕАЛИЗОВАНО"""
-    print("Вычитание не реализовано")
-    input("Нажмите Enter...")
-
-def multiplication():
-    """Умножение - НЕ РЕАЛИЗОВАНО"""
-    print("Умножение не реализовано")
-    input("Нажмите Enter...")
-
-def division():
-    """Деление - НЕ РЕАЛИЗОВАНО"""
-    print("Деление не реализовано")
-    input("Нажмите Enter...")
-
-# Главная программа
-while True:
-    display_menu()
-    choice = input("Выберите: ")
+class Calculator:
+    def __init__(self):
+        self.a = None
+        self.b = None
     
-    if choice == "1":
-        enter_A()
-    elif choice == "2":
-        enter_B()
-    elif choice == "3":
-        addition()
-    elif choice == "4":
-        subtraction()
-    elif choice == "5":
-        multiplication()
-    elif choice == "6":
-        division()
-    elif choice == "0":
-        print("Выход...")
-        break
-    else:
-        print("Неверный выбор!")
-        input("Нажмите Enter...")
+    def display_menu(self):
+        print("\n=== Калькулятор ===")
+        print("1. Ввести A")
+        print("2. Ввести B") 
+        print("3. Выполнить операцию '+'")
+        print("4. Выполнить операцию '-'")
+        print("5. Выполнить операцию '*'")
+        print("6. Выполнить операцию '/'")
+        print("0. Выход")
+    
+    def input_a(self):
+        try:
+            self.a = float(input("Введите число A: "))
+            print(f"Число A установлено: {self.a}")
+        except ValueError:
+            print("Ошибка: введите корректное число")
+    
+    def input_b(self):
+        try:
+            self.b = float(input("Введите число B: "))
+            print(f"Число B установлено: {self.b}")
+        except ValueError:
+            print("Ошибка: введите корректное число")
+    
+    def add(self):
+        if self.a is not None and self.b is not None:
+            result = self.a + self.b
+            print(f"Результат: {self.a} + {self.b} = {result}")
+        else:
+            print("Ошибка: сначала введите числа A и B")
+    
+    def subtract(self):
+        if self.a is not None and self.b is not None:
+            result = self.a - self.b
+            print(f"Результат: {self.a} - {self.b} = {result}")
+        else:
+            print("Ошибка: сначала введите числа A и B")
+    
+    def multiply(self):
+        if self.a is not None and self.b is not None:
+            result = self.a * self.b
+            print(f"Результат: {self.a} * {self.b} = {result}")
+        else:
+            print("Ошибка: сначала введите числа A и B")
+    
+    def divide(self):
+        if self.a is not None and self.b is not None:
+            if self.b != 0:
+                result = self.a / self.b
+                print(f"Результат: {self.a} / {self.b} = {result}")
+            else:
+                print("Ошибка: деление на ноль")
+        else:
+            print("Ошибка: сначала введите числа A и B")
+
+def main():
+    calc = Calculator()
+    
+    while True:
+        calc.display_menu()
+        choice = input("Выберите пункт меню: ")
+        
+        if choice == '1':
+            calc.input_a()
+        elif choice == '2':
+            calc.input_b()
+        elif choice == '3':
+            calc.add()
+        elif choice == '4':
+            calc.subtract()
+        elif choice == '5':
+            calc.multiply()
+        elif choice == '6':
+            calc.divide()
+        elif choice == '0':
+            print("Выход из программы")
+            break
+        else:
+            print("Неверный выбор. Попробуйте снова.")
+
+if __name__ == "__main__":
+    main()
