@@ -1,0 +1,88 @@
+import os
+
+class Calculator:
+    def __init__(self):
+        self.A = 0
+        self.B = 0
+    
+    def display_menu(self):
+        """Отображение меню"""
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("=== PYTHON КАЛЬКУЛЯТОР ===")
+        print(f"A = {self.A}, B = {self.B}")
+        print("1. Ввести A")
+        print("2. Ввести B")
+        print("3. Операция '+'")
+        print("4. Операция '-'")
+        print("5. Операция '*'")
+        print("6. Операция '/'")
+        print("0. Выход")
+        print("==========================")
+    
+    def enter_A(self):
+        """Ввод значения A"""
+        try:
+            self.A = float(input("Введите значение A: "))
+            print(f"Значение A установлено: {self.A}")
+        except ValueError:
+            print("Ошибка: введите корректное число!")
+        input("\nНажмите Enter для продолжения...")
+    
+    def enter_B(self):
+        """Ввод значения B"""
+        try:
+            self.B = float(input("Введите значение B: "))
+            print(f"Значение B установлено: {self.B}")
+        except ValueError:
+            print("Ошибка: введите корректное число!")
+        input("\nНажмите Enter для продолжения...")
+    
+    def perform_addition(self):
+        """Операция сложения - будет реализована в отдельной ветке"""
+        print("Операция сложения не реализована")
+        input("\nНажмите Enter для продолжения...")
+    
+    def perform_subtraction(self):
+        """Операция вычитания - будет реализована в отдельной ветке"""
+        print("Операция вычитания не реализована")
+        input("\nНажмите Enter для продолжения...")
+    
+    def perform_multiplication(self):
+        """Операция умножения - будет реализована в отдельной ветке"""
+        print("Операция умножения не реализована")
+        input("\nНажмите Enter для продолжения...")
+    
+    def perform_division(self):
+        """Операция деления - будет реализована в отдельной ветке"""
+        print("Операция деления не реализована")
+        input("\nНажмите Enter для продолжения...")
+
+def main():
+    calc = Calculator()
+    exit_program = False
+    
+    while not exit_program:
+        calc.display_menu()
+        choice = input("Выберите пункт меню: ")
+        
+        if choice == "1":
+            calc.enter_A()
+        elif choice == "2":
+            calc.enter_B()
+        elif choice == "3":
+            calc.perform_addition()
+        elif choice == "4":
+            calc.perform_subtraction()
+        elif choice == "5":
+            calc.perform_multiplication()
+        elif choice == "6":
+            calc.perform_division()
+        elif choice == "0":
+            exit_program = True
+            print("Выход из программы...")
+        else:
+            print("Неверный выбор! Попробуйте снова.")
+            input("Нажмите Enter для продолжения...")
+
+if __name__ == "__main__":
+    main()
